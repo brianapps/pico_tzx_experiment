@@ -1,0 +1,15 @@
+.pio_version 0 
+
+.program pulse
+    set y, 1
+.wrap_target
+start:
+    pull
+    mov pins, y
+    mov y, !y
+    mov x, osr
+    jmp x--, loop
+loop:
+    jmp !x, start [1]
+    jmp x--, loop [4]
+.wrap
